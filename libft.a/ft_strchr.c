@@ -11,35 +11,22 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 char *ft_strchr(const char *str, int a)
 {   
-    int i;
+    unsigned int i;
     i = 0;
     while(str[i] != '\0')
     {
         if(str[i] == a)
         {
-            return ((char *) str[i]);
+            return ((char *) str + i);
         }
         i++;
     }
     if (a == '\0')
     {
-        return ((char *)str[i]);
+        return ((char *)str + i);
     }
     return (0);
-}
-
-int main (void) {
-   const char str[] = "http://www.tutorialspoint.com";
-   const char ch = '.';
-   char *ret;
-
-   ret = ft_strchr(str, ch);
-
-   printf("String after |%c| is - |%s|\n", ch, ret);
-   
-   return(0);
 }
