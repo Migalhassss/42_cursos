@@ -8,5 +8,9 @@ int ft_strncmp(char *str1, char *str2, size_t n)
         str2++;
         n--;
     }
+    if(n == 0)
+    {
+        return (0);
+    }
     return(*(unsigned char *)str1 - *(unsigned char  *)str2);
 }
