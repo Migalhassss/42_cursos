@@ -6,7 +6,7 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:47:23 by micarrel          #+#    #+#             */
-/*   Updated: 2022/10/26 16:03:20 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/10/27 10:19:08 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,4 @@ char *ft_strchr(const char *str, int a)
         return ((char *)str + i);
     }
     return (0);
-}q
+}

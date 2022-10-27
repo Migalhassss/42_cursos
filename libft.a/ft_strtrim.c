@@ -6,12 +6,13 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 11:58:57 by micarrel          #+#    #+#             */
-/*   Updated: 2022/10/26 15:54:42 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/10/27 17:58:12 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+#include "libft.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 int ft_strlen(char const *str)
 {
@@ -25,63 +26,50 @@ int ft_strlen(char const *str)
     return (i);
 }
 
-char *ft_strchr(const char *str, int a)
-{   
-    unsigned int i;
-    
-    i = 0;
-    while(str[i] != '\0')
-    {
-        if(str[i] == a)
-        {
-            return ((char *) str + i);
-        }
-        i++;
-    }
-    if (a == '\0')
-    {
-        return ((char *)str + i);
-    }
-    return (0);
-}
-
-unsigned ft_strlcpy(char *str1, char const *str2, unsigned int size)
+int check(char const *s1 , char const *set, size_t i)
 {
-    unsigned int i;
-    unsigned int x;
-
-    i = 0;
-    x = 0;
-    while (str2[i] != '\0')
+    size_t j;
+    
+    j = 0;
+    while(set[j] != '\0')
     {
-        i++;
-    }
-    if (size != 0)
-    {
-        while (str2[x] != '\0' && x < size - 1)
-        {
-         str1[x] = str2[x];
-         x++;
+        if (s1[i] == set[j])
+        {   
+            return (1);
         }
-        str1[x] = '\0';
+        j++;
     }
-    return (i);
+        return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
 	size_t	j;
+    size_t  s;
 	char	*str;
     
+    s = 0; 
+    i = 0;
+    j = ft_strlen(s1);
+    
+    str = (char *)malloc(sizeof(char) * (j - i + 1));
+    if (str == NULL)
+    {
+        return (NULL);
+    }
+    while (s1[i] != '\0')
+    {
+        if(check(s1, set, i) == 1)
+        {
+        }
+        else
+        {
+            str[s] = s1 [i];
+            s++;
+        }
+        i++;
+    }
+    return (str);
 }
 
-
-int main()
-{
- 	char const s[30] = " \tThis is string.    ";
-    char const a[] = "Continue   ";
- 	char *result; 
-    result = ft_strtrim(s,a);
- 	printf("The result is %s\n", result);	return 0;
-}

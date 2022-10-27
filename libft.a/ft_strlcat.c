@@ -1,36 +1,35 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/27 15:35:20 by micarrel          #+#    #+#             */
+/*   Updated: 2022/10/27 15:55:38 by micarrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-int len(char *str)
-{
-    int i;
-    i = 0;
-    
-    while (str[i] != '\0')
-    {
-        i++;
-    }
-    return (i);
-}
-
-unsigned int ft_strlcat(char *str1, char *str2, unsigned int size)
+size_t ft_strlcat(char *str1, char const *str2, size_t size)
 { 
-    unsigned int i;
-    unsigned int j;
-    unsigned int dlen;
-    unsigned int slen;
+    size_t i;
+    size_t j;
+    size_t dlen;
+    size_t slen;
 
     i = 0;
     j = 0;
-
-    while(str1[i] != '\0')
+    while (str1[j] != '\0' && j < size )
     {
-        i++;
+        j++;
     }
-    dlen = i;
-    slen = len(str2);
-    if(size == 0 || size >= dlen)
+    dlen = j;
+    slen = ft_strlen(str2);
+    if(size == 0 || size <= dlen)
     {
-        return (slen = size);
+        return (slen + size);
     }   
     while (str2[i] != '\0' && i < size - dlen - 1)
     {

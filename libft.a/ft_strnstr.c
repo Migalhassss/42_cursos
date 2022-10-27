@@ -1,11 +1,12 @@
 #include <stdio.h>
 
-char	*ft_strstr(char *str, char *ch)
+char	*ft_strnstr(const char *str, const char *ch, size_t i)
 {
-	int	i;
 	int	j;
+	unsigned char ptr;
+	unsigned char ptr2;
 
-	i = 0;
+
 	j = 0;
 	if (ch[j] == '\0')
 		return (str);
