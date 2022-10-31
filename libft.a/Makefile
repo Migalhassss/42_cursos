@@ -1,6 +1,7 @@
-Library		= libft
 
-files 	   = ft_strlen \
+
+NAME = libft.a
+SRC = ft_strlen \
 			 ft_memmove \
 			 ft_memcpy \
 			 ft_strlcpy \
@@ -16,6 +17,7 @@ files 	   = ft_strlen \
 			 ft_tolower \
 			 ft_strchr \
 			 ft_strrchr \
+			 ft_strnstr \
 			 ft_strncmp \
 			 ft_memchr \
 			 ft_memcmp \
@@ -34,31 +36,18 @@ files 	   = ft_strlen \
 			 ft_putendl_fd \
 			 ft_putnbr_fd \
 
-Compiler	= gcc
+CC =gcc
+RM =rm -f
+CFLAGS = -Wall -Werror -Wextra -I.
 
-CmpFlags	= -Wall -Wextra -Werror
+all:$(NAME)
 
-OUTN	= $(Library).a
-
-CFILES	= $(files:%=%.c)
-
-OFILES	= $(files:%=%.o)
-
-NAME	= $(OUTN)
-
-$(NAME):
-	$(Compiler) $(CmpFlags) -c $(CFILES) -I./
-	ar -rc $(OUTN) $(OFILES)
-
-all: $(NAME)
-
+$(NAME): $(SRC:=.o)
+			ar rc $(NAME) $(SRC:=.o)
 clean:
-	rm -f $(NAME)
-	rm -f $(OFILES)
-
+	$(RM)	$(SRC:=.o) $(BONUS:=.o)
 fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: all, clean, fclean, re
+		$(RM)	$(NAME)
+re:	fclean	$(NAME)
+bonus:	$(SRC:=.o)	$(BONUS:=.o)
+		ar rc $(NAME) $(SRC:=.o)	$(BONUS:=.o)

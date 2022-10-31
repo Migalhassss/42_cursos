@@ -1,23 +1,38 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/31 12:01:44 by micarrel          #+#    #+#             */
+/*   Updated: 2022/10/31 12:01:44 by micarrel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char	*ft_strnstr(const char *str, const char *ch, size_t i)
+
+#include "libft.h"
+
+char	*ft_strnstr(const char *str, const char *ch, size_t n)
 {
-	int	j;
-	unsigned char ptr;
-	unsigned char ptr2;
-
+	size_t	j;
+	size_t	i;
 
 	j = 0;
-	if (ch[j] == '\0')
-		return (str);
-	while (str[i] != '\0')
+	i = 0;
+	if (ch[j] == '\0' || str == NULL)
+		return ((char *)str);
+	while (str[i] != '\0' && j < n )
 	{
-		while (str[i + j] == ch[j] && str[i + j] != '\0')
+
+		while (str[i + j] == ch[j] && i + j < n)
+		{
+			if (ch[j + 1] == '\0')
+				return ((char *)str + i);
 			j++;
-		if (ch[j] == '\0')
-			return (str + i);
-		i++;
+		}
 		j = 0;
+		i++;
 	}
 	return (0);
 }

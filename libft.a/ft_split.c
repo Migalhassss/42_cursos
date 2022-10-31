@@ -6,103 +6,58 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:34:47 by micarrel          #+#    #+#             */
-/*   Updated: 2022/10/27 17:11:24 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/10/31 15:25:57 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
-{
-    unsigned int i;
-    unsigned int j;
-    char *temp;
-    
-    i = start;
-    j = 0;
-    temp = (char *)malloc(sizeof(char) * (len + 1));
-    if (temp == NULL)
-    {
-        return (NULL);
-    }
-    while (i < len && s[i] != '\0') 
-    {
-        temp[j] = s[i];
-        i++;
-        j++;
-    }
+#include "libft.h"
 
-    return (temp);
-}
-
-static char *counter_len(char const *s, char c)
+static size_t	count_words(const char *str, char c)
 {
-    size_t i;
+	size_t i;
     size_t j;
-    char *strc;
-    
-    i = 0;
-    j = 0;
 
-    while (s[i] != '\0')
-    {
-        if (s[i] == c)
-        {
-            while (s1[i] == c)
-            {
-                i++;
-            }
-        }
-        else
-        {
-            
-            while(s1[i] != c)
-            {
-                strc[j] = s1[i];
-                j++;
-                i++;
-            }
-            return (j);
-        }
-        i++;
-    }
+	i = 0;
+	j = 0;
+	while (*str != '\0')
+	{
+		if (*str != c && j == 0)
+		{
+			j = 1;
+			i++;
+		}
+		else if (*str == c)
+			j = 0;
+		str++;
+	}
+	return (i);
 }
 
-static char *counter_start(char const *s, char c)
+char		**ft_split(char const *s, char c)
 {
-    size_t i;
-    size_t j;
-    char *strc;
-    
-    i = 0;
-    j = 0;
+	size_t	i;
+	size_t	j;
+    size_t  len;
+	int		index;
+	char	**final;
 
-    while (s[i] != '\0')
-    {
-        if (s[i] == c)
-        {
-            while (s1[i] == c)
-            {
-                i++;
-            }
-            return(c)
-        }
-        i++;
-    }
-}
-
-char **ft_split(char const *s, char c)
-{
-    size_t i;
-    size_t size;
-    size_t len;
-    size_t start;
-    char    **final;
-
-    i = 0;
-    size = (char *)malloc(sizeof(char) * (s, c));
-
-    while (s[i] != '\0')
-    {
-        
-        i++;
-    }
+	if (!s || !(final = malloc((count_words(s, c) + 1) * sizeof(char *))))
+		return (0);
+	i = 0;
+	j = 0;
+    len = ft_strlen(s);
+    index = -1;
+	while (i <= len)
+	{
+		if (s[i] != c && index < 0)
+			index = i;
+		else if ((s[i] == c || i == len) && index >= 0)
+		{
+			final[j++] = ft_substr(s, index, i);
+			index = -1;
+		}
+		i++;
+	}
+	final[j] = 0;
+	return (final);
 }
