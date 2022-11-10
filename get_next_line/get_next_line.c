@@ -1,22 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:47:23 by micarrel          #+#    #+#             */
-/*   Updated: 2022/11/10 14:54:43 by micarrel         ###   ########.fr       */
+/*   Created: 2022/11/10 10:02:06 by micarrel          #+#    #+#             */
+/*   Updated: 2022/11/10 10:09:41 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strchr(const char *s, int i)
+char	*get_next_line(int fd)
 {
-	while (*s != '\0' && (unsigned char)i != *s)
-		s++;
-	if ((unsigned char)i == *s)
-		return ((char *)s);
-	return (0);
 }

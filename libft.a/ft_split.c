@@ -6,7 +6,7 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:34:47 by micarrel          #+#    #+#             */
-/*   Updated: 2022/11/09 11:26:52 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:01:22 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ char	*ftsubstr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 	size_t	j;
 	char	*str;
-
-	str = (char *)malloc(sizeof(*s) * (len + 1));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == 0)
 		return (NULL);
 	i = start;
@@ -47,7 +46,6 @@ static size_t	count_words(const char *str, char c)
 			j = 1;
 			i++;
 		}
-		else if (*str == c)
 			j = 0;
 		str++;
 	}

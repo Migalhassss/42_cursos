@@ -36,12 +36,11 @@ static void	print_check(char s, va_list *args, int *len, int *i)
 
 int	ft_printf(const char *string, ...)
 {
-	va_list args;
+	va_list	args;
 	int		i;
 	int		len;
 
 	i = 0;
-
 	len = 0;
 	va_start(args, string);
 	while (string[i] != '\0')

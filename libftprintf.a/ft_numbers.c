@@ -14,17 +14,17 @@
 
 void	ft_number(int number, int len)
 {
-	if(number == -2147483648)
+	if (number == -2147483648)
 	{
 		write(1, "-2147483648", 11);
 		(*len) += 11;
-		return
+		return ;
 	}
 	if (number < 0)
-	(
+	{
 		ft_putchar('-', len);
 		ft_number(number * -1, len);
-	)
+	}
 	else
 	{
 		if (number > 9)
