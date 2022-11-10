@@ -12,25 +12,26 @@
 
 #include "libft.h"
 
-char *ft_strrchr(const char *str, int a)
-{   
-    int i;
-    i = 0;
-    while(str[i] != '\0')
-    {
-        i++;
-    }
-    if (a == 0)
-    {
-        return ((char *)str + i);
-    }  
-    while(i >= 0)
-    {
-        if(str[i] == a)
-        {
-            return ((char *)str + i);
-        }
-        i--;
-    } 
-    return (0);
+char	*ft_strrchr(const char *str, int a)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	if (a == 0)
+	{
+		return ((char *)str + i);
+	}
+	while (i >= 0)
+	{
+		if (str[i] == a)
+		{
+			return ((char *)str + i);
+		}
+		i--;
+	}
+	return (0);
 }

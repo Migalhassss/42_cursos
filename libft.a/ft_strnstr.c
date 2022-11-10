@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "libft.h"
 
 char	*ft_strnstr(const char *str, const char *ch, size_t n)
@@ -20,11 +19,10 @@ char	*ft_strnstr(const char *str, const char *ch, size_t n)
 
 	j = 0;
 	i = 0;
-	if (ch[j] == '\0' || str == NULL)
+	if (ch[0] == '\0' || str == NULL)
 		return ((char *)str);
-	while (str[i] != '\0' && j < n )
+	while (str[i] != '\0' && j < n)
 	{
-
 		while (str[i + j] == ch[j] && i + j < n)
 		{
 			if (ch[j + 1] == '\0')

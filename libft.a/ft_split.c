@@ -6,16 +6,37 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 11:34:47 by micarrel          #+#    #+#             */
-/*   Updated: 2022/10/31 15:25:57 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:26:52 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+char	*ftsubstr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	char	*str;
+
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (str == 0)
+		return (NULL);
+	i = start;
+	j = 0;
+	while (i < len)
+	{
+		str[j] = s[i];
+		i++;
+		j++;
+	}
+	str[j] = '\0';
+	return (str);
+}
+
 static size_t	count_words(const char *str, char c)
 {
-	size_t i;
-    size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
@@ -33,27 +54,26 @@ static size_t	count_words(const char *str, char c)
 	return (i);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t	i;
 	size_t	j;
-    size_t  len;
 	int		index;
 	char	**final;
 
-	if (!s || !(final = malloc((count_words(s, c) + 1) * sizeof(char *))))
-		return (0);
+	final = (char **)malloc((count_words(s, c) + 1) * sizeof(char *));
+	if (final == NULL)
+		return (NULL);
 	i = 0;
 	j = 0;
-    len = ft_strlen(s);
-    index = -1;
-	while (i <= len)
+	index = -1;
+	while (i <= ft_strlen(s))
 	{
 		if (s[i] != c && index < 0)
 			index = i;
-		else if ((s[i] == c || i == len) && index >= 0)
+		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			final[j++] = ft_substr(s, index, i);
+			final[j++] = ftsubstr(s, index, i);
 			index = -1;
 		}
 		i++;

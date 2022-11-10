@@ -6,17 +6,17 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/24 16:43:57 by micarrel          #+#    #+#             */
-/*   Updated: 2022/10/24 16:45:27 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/11/09 11:42:01 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int a)
+int	ft_tolower(int a)
 {
-    if(a >= 'A' && a <= 'Z')
-    {
-        a += 32;
-    }
-    return (a);
+	if (a >= 'A' && a <= 'Z')
+	{
+		a += 32;
+	}
+	return (a);
 }
