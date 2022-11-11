@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *str, const char *ch, size_t n)
 
 	j = 0;
 	i = 0;
-	if (ch[0] == '\0' || str == NULL)
+	if (ch[0] == '\0')
 		return ((char *)str);
 	while (str[i] != '\0' && j < n)
 	{

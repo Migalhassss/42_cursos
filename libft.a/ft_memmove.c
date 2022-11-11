@@ -6,7 +6,7 @@
 /*   By: micarrel <micarrel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/27 15:30:37 by micarrel          #+#    #+#             */
-/*   Updated: 2022/11/10 12:06:00 by micarrel         ###   ########.fr       */
+/*   Updated: 2022/11/11 00:48:43 by micarrel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	*ft_memmove(void *str1, const void *str2, size_t n)
 	size_t	i;
 
 	i = 0;
+	if (str1 == str2 || n == 0)
+		return (str1);
 	if (str1 > str2)
 	{
 		i = n;
